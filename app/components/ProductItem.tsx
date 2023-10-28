@@ -1,72 +1,30 @@
 import React from "react";
-import { View, Text, TouchableOpacity, Image } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 
-export default function ProductItem({ product, navigation }) {
+export default function ProductItem({ product }) {
   const displayName =
     product.name.length > 12
       ? product.name.substring(0, 12) + "..."
       : product.name;
+  const router = useRouter();
 
   return (
-    <TouchableOpacity
-      onPress={() => navigation.navigate("OrderDetails", { product })}
-    >
-      <View style={styles.product}>
-        <Image source={product.imageUri} style={styles.productImage} />
-      </View>
-      <View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginHorizontal: 5,
-            marginVertical: 5,
-          }}
-        >
-          <Text style={{ fontSize: 18, fontWeight: "500" }}>{displayName}</Text>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
-            <Text style={{ marginRight: 5 }}>{product.ratings}</Text>
-            <Ionicons name="ios-star-sharp" size={15} color="#DD8B0D" />
-          </View>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            marginHorizontal: 5,
-          }}
-        >
-          <Text>{product.delivery}</Text>
-          <Text style={{ color: "#C70909", fontSize: 14 }}>
-            ${product.price}
-          </Text>
-        </View>
-      </View>
-    </TouchableOpacity>
+    <div className="p-2 cursor-pointer" onClick={() => router.push(`/order-details/${product.id}`)}>
+      <div className="w-48 h-24">
+        <Image src={product.imageUri} alt={product.name} layout="fill" className="object-cover rounded-md" />
+      </div>
+      <div className="flex justify-between items-center mt-2 mb-1 mx-1">
+        <p className="text-lg font-medium">{displayName}</p>
+        <div className="flex items-center">
+          <p className="mr-1">{product.ratings}</p>
+          <i className="text-yellow-500"><ion-icon name="star"></ion-icon></i>
+        </div>
+      </div>
+      <div className="flex justify-between items-center mx-1">
+        <p>{product.delivery}</p>
+        <p className="text-red-500 text-sm">${product.price}</p>
+      </div>
+    </div>
   );
 }
-
-const styles = {
-  productSection: {
-    marginBottom: 20,
-  },
-  sectionTitle: {
-    fontSize: 22,
-    marginBottom: 10,
-  },
-  product: {    
-    marginRight: 10,    
-    width: 200,
-    height: 100,    
-  },
-  productImage: {
-    flex: 1,    
-    width: "100%",
-    height: "100%",
-    resizeMode: "cover",
-    borderRadius: 10
-  },
-};

@@ -1,30 +1,14 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function Option({ label, selected, onSelect }) {
   return (
-    <TouchableOpacity style={styles.option} onPress={onSelect}>
+    <div className="flex items-center cursor-pointer" onClick={onSelect}>
       {selected ? (
-        <MaterialCommunityIcons
-          name="radiobox-marked"
-          size={24}
-          color="black"
-        />
+        <i className="mr-2 text-lg"><ion-icon name="checkmark-circle"></ion-icon></i>
       ) : (
-        <MaterialCommunityIcons name="radiobox-blank" size={24} color="black" />
+        <i className="mr-2 text-lg"><ion-icon name="ellipse-outline"></ion-icon></i>
       )}
-      <Text style={styles.optionText}>{label}</Text>
-    </TouchableOpacity>
+      <p>{label}</p>
+    </div>
   );
 }
-
-const styles = StyleSheet.create({
-  option: {
-    flexDirection: 'row',
-    alignItems: 'center'
-  },
-  optionText: {
-    marginLeft: 5
-  }
-})

@@ -1,119 +1,39 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
-import { DrawerItem } from "@react-navigation/drawer";
-import { CommonActions } from "@react-navigation/native";
-import { Ionicons, Octicons, AntDesign } from "@expo/vector-icons";
+import { useRouter } from 'next/router'
+import Image from 'next/image'
 
-export default function MyDrawer(props) {
+export default function MyDrawer() {
   const profilePicture = "https://via.placeholder.com/150";
+  const router = useRouter();
+
   return (
-    <View style={styles.container}>
-      <View style={{ marginLeft: 20 }}>
-        <Image source={{ uri: profilePicture }} style={styles.profileImage} />
-        <Text style={{ marginBottom: 5, fontSize: 16 }}>
-          Mathias Minchan Wolstrohn
-        </Text>
-        <Text>ab.cd@alum.up.edu.pe</Text>
-      </View>
-      <View
-        style={{
-          borderBottomWidth: 1,
-          borderBottomColor: "#D0D0D0",
-          marginVertical: 20,
-        }}
-      ></View>
-      <DrawerItem
-        label="Inicio"
-        onPress={() => {
-          props.navigation.dispatch(
-            CommonActions.reset({
-              index: 0,
-              routes: [{ name: "Home" }],
-            })
-          );
-        }}
-        icon={() => (
-          <Ionicons name="home" size={24} style={{ marginRight: -20 }} />
-        )}
-      />
-
-      <DrawerItem
-        label="Perfil"
-        onPress={() => props.navigation.navigate("Mi cuenta")}
-        icon={() => (
-          <Ionicons
-            name="person"
-            size={24}
-            color="black"
-            style={{ marginRight: -20 }}
-          />
-        )}
-      />
-      <DrawerItem
-        label="Historial de pedidos"
-        onPress={() => props.navigation.navigate("Historial de pedidos")}
-        icon={() => (
-          <Octicons
-            name="history"
-            size={24}
-            color="black"
-            style={{ marginRight: -20 }}
-          />
-        )}
-      />
-      <DrawerItem
-        label="Ayuda"
-        onPress={() => props.navigation.navigate("Ayuda")}
-        icon={() => (
-          <AntDesign
-            name="customerservice"
-            size={24}
-            color="black"
-            style={{ marginRight: -20 }}
-          />
-        )}
-      />
-
-      {/* Bottom Sign In Text */}
-      <TouchableOpacity style={styles.footer}>
-        <Ionicons name="enter-outline" size={24} color="black" />
-        <Text style={styles.signInText}>Regístrate o inicia sesión</Text>
-      </TouchableOpacity>
-    </View>
+    <div className="p-5">
+      <div className="mb-5">
+        <Image src={profilePicture} alt="Profile" className="rounded-full w-20 h-20 mb-2" />
+        <p className="mb-1 text-lg">Mathias Minchan Wolstrohn</p>
+        <p>ab.cd@alum.up.edu.pe</p>
+      </div>
+      <hr className="mb-5 border-gray-200" />
+      <div className="flex items-center mb-5 cursor-pointer" onClick={() => router.push("/home")}>
+        <i className="mr-2 text-lg"><ion-icon name="home"></ion-icon></i>
+        <p>Inicio</p>
+      </div>
+      <div className="flex items-center mb-5 cursor-pointer" onClick={() => router.push("/mi-cuenta")}>
+        <i className="mr-2 text-lg"><ion-icon name="person"></ion-icon></i>
+        <p>Perfil</p>
+      </div>
+      <div className="flex items-center mb-5 cursor-pointer" onClick={() => router.push("/historial-de-pedidos")}>
+        <i className="mr-2 text-lg"><ion-icon name="history"></ion-icon></i>
+        <p>Historial de pedidos</p>
+      </div>
+      <div className="flex items-center mb-5 cursor-pointer" onClick={() => router.push("/ayuda")}>
+        <i className="mr-2 text-lg"><ion-icon name="help-circle"></ion-icon></i>
+        <p>Ayuda</p>
+      </div>
+      <div className="flex items-center mt-auto mb-5 cursor-pointer">
+        <i className="mr-2 text-lg"><ion-icon name="log-in"></ion-icon></i>
+        <p>Regístrate o inicia sesión</p>
+      </div>
+    </div>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 50,
-  },
-  logoContainer: {
-    alignItems: "center",
-  },
-  logo: {
-    fontSize: 50,
-    fontWeight: "bold",
-  },
-  promptText: {
-    fontSize: 18,
-    textAlign: "center",
-    marginVertical: 20,
-  },
-  footer: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 20,
-    paddingHorizontal: 20,
-  },
-  signInText: {
-    marginLeft: 10,
-  },
-  profileImage: {
-    width: 80,
-    height: 80,
-    borderRadius: 100,
-    marginVertical: 10,
-  },
-});

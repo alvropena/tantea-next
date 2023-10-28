@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { Ionicons } from "@expo/vector-icons";
 
 export default function Counter() {
   const [count, setCount] = useState(0);
@@ -13,31 +11,14 @@ export default function Counter() {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={decrement} style={styles.add}>
-        <Ionicons name="remove-outline" size={24} color="black" />
-      </TouchableOpacity>
-      <Text style={{ paddingHorizontal: 20, fontSize: 20 }}>{count}</Text>
-      <TouchableOpacity onPress={increment} style={styles.add}>
-        <Ionicons name="add-outline" size={24} color="black" />
-      </TouchableOpacity>
-    </View>
+    <div className="flex items-center justify-center border p-2 rounded-md border-gray-200">
+      <button onClick={decrement} className="px-2">
+        <i><ion-icon name="remove"></ion-icon></i>
+      </button>
+      <p className="px-5 text-lg">{count}</p>
+      <button onClick={increment} className="px-2">
+        <i><ion-icon name="add"></ion-icon></i>
+      </button>
+    </div>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 1,
-    padding: 10,
-    borderRadius: 5,
-    borderColor: "#D0D0D0",
-  },
-  add: {
-    paddingHorizontal: 10,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

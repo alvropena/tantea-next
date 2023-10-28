@@ -1,29 +1,16 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import Option from "./Option";
-import { AntDesign } from "@expo/vector-icons";
 
 export default function Dropdown({ title, options }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
   return (
-    <View
-      style={{
-        paddingVertical: 10,
-        borderTopWidth: 1,
-        borderTopColor: "#D0D0D0",
-      }}
-    >
-      <TouchableOpacity
-        style={styles.dropdownHeader}
-        onPress={() => setIsOpen(!isOpen)}
-      >
-        <Text style={{ fontSize: 18, fontWeight: "500", marginVertical: 10 }}>
-          {title}
-        </Text>
-        <AntDesign name={isOpen ? "up" : "down"} size={16} color="black" />
-      </TouchableOpacity>
+    <div className="py-2 border-t border-gray-200">
+      <div className="flex justify-between items-center cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+        <p className="text-lg font-medium my-2">{title}</p>
+        <i><ion-icon name={isOpen ? "chevron-up" : "chevron-down"}></ion-icon></i>
+      </div>
 
       {isOpen &&
         options.map((option, idx) => (
@@ -34,14 +21,6 @@ export default function Dropdown({ title, options }) {
             onSelect={() => setSelectedOption(option)}
           />
         ))}
-    </View>
+    </div>
   );
 }
-
-const styles = StyleSheet.create({
-  dropdownHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-});

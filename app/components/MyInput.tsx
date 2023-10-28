@@ -1,10 +1,9 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from "react";
 
 export default function MyInput() {
   return (
-    <View>
-      <Text>MyInput</Text>
-    </View>
-  )
+    <div>
+      <input type="text" className="border-2 border-gray-300 p-2 rounded-md" />
+    </div>
+  );
 }
