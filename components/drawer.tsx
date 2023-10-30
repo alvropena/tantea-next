@@ -2,13 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 // Icons
-import HomeIcon from '../../public/home.svg';
-import SearchIcon from '../../public/search.svg';
-import ProfileIcon from '../../public/profile.svg';
-import HistoryIcon from '../../public/history.svg';
-import CurrentOrderIcon from '../../public/current-order.svg';
-import SupportIcon from '../../public/support.svg';
-import SignInIcon from '../../public/sign-in.svg';
+import HomeIcon from '@/public/home.svg';
+import SearchIcon from '@/public/search.svg';
+import ProfileIcon from '@/public/profile.svg';
+import HistoryIcon from '@/public/history.svg';
+import CurrentOrderIcon from '@/public/current-order.svg';
+import SupportIcon from '@/public/support.svg';
+import SignInIcon from '@/public/sign-in.svg';
 
 interface DrawerProps {
     closeDrawer: () => void;
