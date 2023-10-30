@@ -9,6 +9,7 @@ import HistoryIcon from '@/public/history.svg';
 import CurrentOrderIcon from '@/public/current-order.svg';
 import SupportIcon from '@/public/support.svg';
 import SignInIcon from '@/public/sign-in.svg';
+import { StaticImageData } from 'next/image';
 
 interface DrawerProps {
     closeDrawer: () => void;
