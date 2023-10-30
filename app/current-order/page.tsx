@@ -1,10 +1,10 @@
 import React from 'react';
 
 interface OrderScreenProps {
-  orderConfirmed: boolean;
+  orderConfirmed?: boolean;
 }
 
-const OrderScreen: React.FC<OrderScreenProps> = ({ orderConfirmed }) => {
+const CurrentOrder: React.FC<OrderScreenProps> = ({ orderConfirmed }) => {
   return (
     <div className="p-5">
       {orderConfirmed ? (
@@ -17,9 +17,9 @@ const OrderScreen: React.FC<OrderScreenProps> = ({ orderConfirmed }) => {
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-2xl font-bold mb-3">Pedido por confirmar</h1>
           <p className="mb-5 text-center">
-            Le acabamos de enviar un mensaje al restaurante para que confirme tu pedido. 
+            Le acabamos de enviar un mensaje al restaurante para que confirme tu pedido.
             Espera la confirmación un máximo de 5 minutos por favor.
-            Te llegará un mensaje de confirmación a tu número telefónico cuando tu pedido haya sido confirmado. 
+            Te llegará un mensaje de confirmación a tu número telefónico cuando tu pedido haya sido confirmado.
             ¡Muchas gracias por tantear!
           </p>
           <div className="w-full">
@@ -46,4 +46,4 @@ const OrderScreen: React.FC<OrderScreenProps> = ({ orderConfirmed }) => {
   );
 }
 
-export default OrderScreen;
+export default CurrentOrder;

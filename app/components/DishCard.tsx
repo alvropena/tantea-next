@@ -1,5 +1,7 @@
+"use client"
 import React from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation';
 
 // Type declaration for a single dish
 export type Dish = {
@@ -17,6 +19,22 @@ type DishCardProps = {
 };
 
 const DishCard: React.FC<DishCardProps> = ({ dish }) => {
+    const router = useRouter();
+
+    // const handleAddClick = () => {
+    //     router.push({
+    //         href: '/order-details',
+    //         options: {
+    //             restaurant: dish.restaurant,
+    //             name: dish.name,
+    //             price: dish.price,
+    //             delivery: dish.delivery,
+    //             rating: dish.rating,
+    //             image: dish.image,
+    //         },
+    //     });
+    // }
+
     return (
         <div className="relative w-72 h-96 mx-2 rounded-lg shadow-lg overflow-hidden bg-white">
 
@@ -42,7 +60,7 @@ const DishCard: React.FC<DishCardProps> = ({ dish }) => {
             </div>
 
             {/* Add Button */}
-            <button className="absolute top-4 right-4 bg-yellow-500 p-2 rounded-full">
+            <button className="absolute top-4 right-4 bg-yellow-500 p-2 rounded-full" onClick={handleAddClick}>
                 +
             </button>
         </div>
