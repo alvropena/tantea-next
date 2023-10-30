@@ -60,7 +60,7 @@ const DishCard: React.FC<DishCardProps> = ({ dish }) => {
             </div>
 
             {/* Add Button */}
-            <button className="absolute top-4 right-4 bg-yellow-500 p-2 rounded-full" onClick={handleAddClick}>
+            <button className="absolute top-4 right-4 bg-yellow-500 p-2 rounded-full">
                 +
             </button>
         </div>
