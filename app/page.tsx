@@ -1,8 +1,8 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import PriceInput from './components/PriceInput';
-import DishRow from './components/DishRow';
-import UniversityModal from './components/UniversityModal'; // Import the new component
+import PriceInput from './components/price-input';
+import DishRow from './components/dish-row';
+import UniversityModal from './components/university-modal'; // Import the new component
 import { sampleDishes } from './data/data';
 
 export default function Page() {

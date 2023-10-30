@@ -1,13 +1,34 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+// Icons
+import HomeIcon from '../../public/home.svg';
+import SearchIcon from '../../public/search.svg';
+import ProfileIcon from '../../public/profile.svg';
+import HistoryIcon from '../../public/history.svg';
+import CurrentOrderIcon from '../../public/current-order.svg';
+import SupportIcon from '../../public/support.svg';
+import SignInIcon from '../../public/sign-in.svg';
 
 interface DrawerProps {
     closeDrawer: () => void;
 }
 
-const Drawer: React.FC<DrawerProps> = ({ closeDrawer }) => {
+interface DrawerLinkProps {
+    icon: StaticImageData;
+    alt: string;
+    href: string;
+    label: string;
+}
 
+const DrawerLink: React.FC<DrawerLinkProps> = ({ icon, alt, href, label }) => (
+    <Link className="text-gray-600 cursor-pointer hover:bg-gray-100 p-2 rounded flex flex-row items-center mb-4" href={href}>
+        <Image src={icon} alt={alt} height={20} width={20} className="mr-2" />
+        {label}
+    </Link>
+);
+
+const Drawer: React.FC<DrawerProps> = ({ closeDrawer }) => {
     return (
         <div onClick={closeDrawer} className="fixed top-0 left-0 w-full h-full bg-gray-700 bg-opacity-50 flex z-50">
             <div className="w-64 p-8 bg-white shadow-lg rounded-lg flex flex-col">
@@ -21,29 +42,15 @@ const Drawer: React.FC<DrawerProps> = ({ closeDrawer }) => {
                 </div>
                 <div className="flex-grow flex flex-col justify-between">
                     <div className='flex flex-col'>
-                        <Link className="text-gray-600 mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded" href={'/'}>
-                            Inicio
-                        </Link>
-                        <Link className="text-gray-600 mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded" href={"/explore"}>
-                            Explora
-                        </Link>
-                        <Link className="text-gray-600 mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded" href={"/profile"}>
-                            Mi cuenta
-                        </Link>
-                        <Link className="text-gray-600 mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded" href={"/history"}>
-                            Historial de pedidos
-                        </Link>
-                        <Link className="text-gray-600 mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded" href={"/current-order"}>
-                            Pedido en curso
-                        </Link>
-                        <Link className="text-gray-600 mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded" href={"/support"}>
-                            Ayuda
-                        </Link>
+                        <DrawerLink icon={HomeIcon} alt="home" href="/" label="Inicio" />
+                        <DrawerLink icon={SearchIcon} alt="search" href="/explore" label="Explora" />
+                        <DrawerLink icon={ProfileIcon} alt="profile" href="/profile" label="Mi cuenta" />
+                        <DrawerLink icon={HistoryIcon} alt="history" href="/history" label="Historial de pedidos" />
+                        <DrawerLink icon={CurrentOrderIcon} alt="current-order" href="/current-order" label="Pedido en curso" />
+                        <DrawerLink icon={SupportIcon} alt="support" href="/support" label="Ayuda" />
                     </div>
                     <div className="mt-4">
-                        <Link className="text-gray-600 mb-4 cursor-pointer hover:bg-gray-100 p-2 rounded" href={"/sign-up"}>
-                            Regístrate / ingresa
-                        </Link>
+                        <DrawerLink icon={SignInIcon} alt="sign-in" href="/sign-up" label="Regístrate / ingresa" />
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import DishCard, { Dish } from './DishCard'; // Make sure to export the Dish type from DishCard.tsx
+import DishCard, { Dish } from './dish-card'; // Make sure to export the Dish type from DishCard.tsx
 
 // Type declaration for component props
 type DishRowProps = {
