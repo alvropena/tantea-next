@@ -2,6 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation';
+import { StaticImageData } from 'next/image';
 
 // Type declaration for a single dish
 export type Dish = {
@@ -10,7 +11,7 @@ export type Dish = {
     price: string;
     delivery: string;
     rating: string;
-    image: string;
+    image: StaticImageData | string;
 };
 
 // Type declaration for component props
